@@ -92,7 +92,7 @@ public class Tree : MonoBehaviour {
     public void Start()
     {
         // Associe le node racine avec celui déjà au démarrage du jeu
-        root = transform.GetChild(0).GetComponent<Node>();
+        //root = transform.GetChild(0).GetComponent<Node>();
     }
 
     /// <summary>

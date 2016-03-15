@@ -5,12 +5,13 @@ public class RandomTree : MonoBehaviour {
 
     public GameObject personGameObject;
 
-    public Transform tree;
+    public Tree tree;
 
 	// Use this for initialization
 	void Start () {
+        tree = GetComponent<Tree>();
 
-        CreateNodeWithChildren(tree, 3);
+        tree.root = CreateNodeWithChildren(tree.transform, 3);
 	}	
 
     private Node CreateNodeWithChildren(Transform parent, int nbGenerations)
@@ -29,5 +30,15 @@ public class RandomTree : MonoBehaviour {
             }
         }
         return node;
+    }
+
+    public Person RandomPerson(Transform parent)
+    {
+        GameObject g = Instantiate(personGameObject, Vector3.zero, Quaternion.identity) as GameObject;
+        g.transform.SetParent(parent);
+        Node node = g.GetComponent<Node>();
+        node.parent = parent.GetComponent<Node>();
+        Person person = g.GetComponent<Person>();
+        return person;
     }
 }

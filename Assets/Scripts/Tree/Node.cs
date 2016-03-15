@@ -49,11 +49,17 @@ public class Node : MonoBehaviour {
     /// </summary>
     private float nodeWidth = 0f;
 
+    /// <summary>
+    /// Les paramètres d'affichage propres au node
+    /// </summary>
+    public LayoutParams layoutParams;
+
     public void Start()
     {
         // Le node parent est toujours le parent dans la hierarchie du jeu (scene)
         parent = transform.parent.GetComponent<Node>();
 
+        layoutParams = GetComponent<LayoutParams>();
         person = GetComponent<Person>();
         line = GetComponent<LineRenderer>();
         line.SetWidth(0.1f, 0.1f);
@@ -105,7 +111,7 @@ public class Node : MonoBehaviour {
     {
         // Largeur totale du noeud parent avec ses enfants
         float width = GetLayoutWidth();
-
+    
         // Largeur proportionnelle entre deux enfants
         float nodeWidth = width / children.Count;
                         
@@ -144,7 +150,8 @@ public class Node : MonoBehaviour {
                 parent.transform.position,
                 transform.position
             };
-            line.SetPositions(positions);
+            line.SetPosition(0, positions[0]);
+            line.SetPosition(1, positions[1]);
         }
     }    
 }
