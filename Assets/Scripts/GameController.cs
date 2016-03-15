@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Gestion principale du jeu
+/// </summary>
 public class GameController : MonoBehaviour {
 
+    /// <summary>
+    /// Singleton, accessible facilement dans tous les scripts
+    /// </summary>
     private static GameController _instance = null;
     public static GameController instance
     {
@@ -18,11 +24,11 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	    // Au démarrage du jeu
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 }

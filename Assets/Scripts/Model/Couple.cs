@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Modélise un couple de deux personnes
+/// </summary>
 public class Couple : MonoBehaviour {
 
+    /// <summary>
+    /// 1ere personne du couple
+    /// </summary>
     private Person _personA = null;
     public Person personA
     {
@@ -12,11 +18,15 @@ public class Couple : MonoBehaviour {
             _personA = value;
             if (_personA != null)
             {
+                // Déplace la personne dans la hierarchie de la scene
                 _personA.transform.parent = transform.parent;
             }
         }
     }
 
+    /// <summary>
+    /// 2e personne du couple
+    /// </summary>
     private Person _personB = null;
     public Person personB
     {
@@ -26,6 +36,7 @@ public class Couple : MonoBehaviour {
             _personB = value;
             if (_personB != null)
             {
+                // Déplace la personne dans la hierarchie de la scene
                 _personB.transform.parent = transform.parent;
             }
         }
@@ -34,6 +45,7 @@ public class Couple : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        // Recherche les éventuelles personnes formant le couple à la création 
         if (transform.childCount >= 1)
         {
             personA = transform.GetChild(0).GetComponent<Person>();

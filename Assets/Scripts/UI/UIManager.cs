@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Gestionnaire principale de l'interface utilisateur
+/// </summary>
 public class UIManager : MonoBehaviour {
 
+    /// <summary>
+    /// Singleton
+    /// </summary>
     private static UIManager _instance = null;
     public static UIManager instance
     {
@@ -14,15 +20,5 @@ public class UIManager : MonoBehaviour {
             }
             return _instance;
         }
-    }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }    
 }

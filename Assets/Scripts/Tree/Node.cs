@@ -2,52 +2,96 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Il s'agit d'un élément de l'arborescence de la famille 
+/// il peut s'agir d'une personne ou d'un couple
+/// un node est toujours associé à un node parent et peut avoir plusieurs nodes enfants
+/// </summary>
 public class Node : MonoBehaviour {
 
+    /// <summary>
+    /// Le parent 
+    /// </summary>
     public Node parent;
 
+    /// <summary>
+    /// A quelle génération appartient le node
+    /// </summary>
     public int generation = 0;
 
+    /// <summary>
+    /// Les nodes enfants
+    /// </summary>
     public List<Node> children;
 
+    /// <summary>
+    /// Gestion de l'affichage du node à l'écran (layout) 
+    /// Largeur et Hauteur    
+    /// </summary>
     public float layoutWidth = 1f;
     public float layoutHeight = 1f;
 
+    /// <summary>
+    /// La ligne vers le node parent à dessiner
+    /// </summary>
     public LineRenderer line;
 
-    public float nodeWidth = 0f;
+    /// <summary>
+    /// ??
+    /// </summary>
+    private float nodeWidth = 0f;
 
     public void Start()
     {
+        // Liens vers les composants
         line = GetComponent<LineRenderer>();
+
+        // Le node parent est toujours le parent dans la hierarchie du jeu (scene)
         parent = transform.parent.GetComponent<Node>();
 
+        // Associe les nodes enfants déjà présents dans la hierarchie du jeu (scene)
         children = new List<Node>();
-
         for(int i = 0; i < transform.childCount; i++)
         {
             Node n = transform.GetChild(i).GetComponent<Node>();
-            children.Add(n);
+            if (n != null)
+            {
+                children.Add(n);
+            }            
         }
     }
 
+    /// <summary>
+    /// Calcule la largeur qu'il faut réserver pour afficher le node à l'écran
+    /// La largeur est trouvée à partir de largeur totales des nodes enfants 
+    /// Il s'agit d'une méthode appelée récursivement
+    /// </summary>
+    /// <returns></returns>
     public float GetLayoutWidth()
     {
+        // La taille "atomique" du node (sans enfants)
         float width = layoutWidth + Tree.instance.spacingX;
+
+        // Calcule la taille des nodes enfants
         float childrenWidth = 0f;
         foreach(Node node in children)
         {
             childrenWidth += node.GetLayoutWidth();
         }
 
+        // Si la taille des enfants est plus grande que celle du noeu
         if (childrenWidth > width)
         {
             return childrenWidth;
         }
 
+        // sinon, il s'agit de la taille du noeu (le noeu a au max 1 enfant)
         return width;
     }
 
+    /// <summary>
+    /// Arragement des nodes enfants en fonction du node parent
+    /// </summary>
     public void LayoutNode()
     {
         // Largeur totale du noeud parent avec ses enfants
@@ -55,45 +99,39 @@ public class Node : MonoBehaviour {
 
         // Largeur proportionnelle entre deux enfants
         float nodeWidth = width / children.Count;
-
-        float xOrigin = transform.position.x - (width / 2f);
                         
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y +Tree.instance.spacingY, transform.position.z);
+        // 1ere position du 1er enfant : situé juste en dessous du node 
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + Tree.instance.spacingY, transform.position.z);
+        
         int i = 0;
+
+        // La taille du node enfant précédent
         float widthPrec = 0f;
+
         foreach(Node node in children)
-        {           
-            if (Tree.instance.align == LayoutAlign.LEFT)
-            {
-                //pos = new Vector3(transform.position.x + (i * (width / children.Count) + (i > 0 ? Tree.instance.spacingX : 0)),                
-                pos = new Vector3(pos.x + widthPrec + (i > 0 ? Tree.instance.spacingX : 0),
-                                  pos.y,
-                                  pos.z);
+        {              
+            // Calcule la position du node enfant à partir de la position node enfant précédent
+            pos = new Vector3(pos.x + widthPrec + (i > 0 ? Tree.instance.spacingX : 0),
+                              pos.y,
+                              pos.z);
 
-                node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime);
+            // Positionne le node enfant avec un effet de ralentissement
+            node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime);
 
-                i++;
-                widthPrec = node.GetLayoutWidth();
-                nodeWidth = widthPrec;
-                node.LayoutNode();
+            // Passe au node suivant
+            i++;
+            widthPrec = node.GetLayoutWidth();
+            nodeWidth = widthPrec;
 
-            }else if (Tree.instance.align == LayoutAlign.CENTER)
-            {
-                pos = new Vector3(xOrigin + (i * nodeWidth), transform.position.y + Tree.instance.spacingY, transform.position.z);
-                node.transform.position = pos;
-
-                i++;
-
-                node.LayoutNode();
-            }
+            // On fait de même pour tous les enfants du node enfant (récursif)
+            node.LayoutNode();
         }
 
-        // Link With Parent
-        
+        // Dessine la ligne vers le node parent        
         if (parent != null)
         {
-            line.SetPosition(0, transform.parent.position);
-            line.SetPosition(1, transform.position);
+            line.SetPosition(0, transform.parent.position);     // Position du node parent
+            line.SetPosition(1, transform.position);            // Position actuelle du node
         }       
     }
 }
