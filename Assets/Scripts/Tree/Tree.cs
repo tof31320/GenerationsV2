@@ -16,6 +16,15 @@ public enum LayoutAlign
 }
 
 /// <summary>
+/// Les type de liens entre parents et enfants
+/// </summary>
+public enum LinesType
+{
+    DROITE,             // Lignes directes
+    AVEC_ANGLES         // Lignes avec des angles droits
+}
+
+/// <summary>
 /// Modélise l'arborescence d'une famille
 /// </summary>
 public class Tree : MonoBehaviour {
@@ -52,6 +61,16 @@ public class Tree : MonoBehaviour {
     public LayoutAlign align = LayoutAlign.LEFT;
 
     /// <summary>
+    /// Comment sont affichées les liens entres parent et enfants
+    /// </summary>
+    public LinesType linesType = LinesType.AVEC_ANGLES;
+
+    /// <summary>
+    /// Indique si on doit afficher et arranger l'arborescence
+    /// </summary>
+    public bool layout = true;
+
+    /// <summary>
     /// Le 1er noeu (racine) 
     /// </summary>
     private Node _root = null;
@@ -81,18 +100,20 @@ public class Tree : MonoBehaviour {
     /// </summary>
     public void Layout()
     {
-        if (node != null)
+        if (_root != null)
         {
-            node.transform.position = transform.position;
-
-            node.LayoutNode();
+            _root.transform.position = transform.position;
+            _root.LayoutNode();
         }
     }    
 
     public void Update()
     {
-        // Arrange l'arborescence à chaque frame (voir si c'est génant)
-        // permet d'avoir l'effet de ralentissement
-        Layout();
+        if (layout)
+        {
+            // Arrange l'arborescence à chaque frame (voir si c'est génant)
+            // permet d'avoir l'effet de ralentissement
+            Layout();
+        }        
     }
 }

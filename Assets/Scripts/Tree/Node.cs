@@ -7,6 +7,7 @@ using System.Collections.Generic;
 /// il peut s'agir d'une personne ou d'un couple
 /// un node est toujours associé à un node parent et peut avoir plusieurs nodes enfants
 /// </summary>
+[RequireComponent(typeof(LineRenderer))]
 public class Node : MonoBehaviour {
 
     /// <summary>
@@ -32,9 +33,16 @@ public class Node : MonoBehaviour {
     public float layoutHeight = 1f;
 
     /// <summary>
-    /// La ligne vers le node parent à dessiner
+    /// Les liens affichés avec le parents
     /// </summary>
+    public List<LineRenderer> links;
+
     public LineRenderer line;
+
+    /// <summary>
+    /// La personne associée au node
+    /// </summary>
+    public Person person;
 
     /// <summary>
     /// ??
@@ -43,11 +51,12 @@ public class Node : MonoBehaviour {
 
     public void Start()
     {
-        // Liens vers les composants
-        line = GetComponent<LineRenderer>();
-
         // Le node parent est toujours le parent dans la hierarchie du jeu (scene)
         parent = transform.parent.GetComponent<Node>();
+
+        person = GetComponent<Person>();
+        line = GetComponent<LineRenderer>();
+        line.SetWidth(0.1f, 0.1f);
 
         // Associe les nodes enfants déjà présents dans la hierarchie du jeu (scene)
         children = new List<Node>();
@@ -57,9 +66,9 @@ public class Node : MonoBehaviour {
             if (n != null)
             {
                 children.Add(n);
-            }            
+            }    
         }
-    }
+    }    
 
     /// <summary>
     /// Calcule la largeur qu'il faut réserver pour afficher le node à l'écran
@@ -101,8 +110,8 @@ public class Node : MonoBehaviour {
         float nodeWidth = width / children.Count;
                         
         // 1ere position du 1er enfant : situé juste en dessous du node 
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + Tree.instance.spacingY, transform.position.z);
-        
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + Tree.instance.spacingY, transform.position.z);           
+
         int i = 0;
 
         // La taille du node enfant précédent
@@ -126,12 +135,16 @@ public class Node : MonoBehaviour {
             // On fait de même pour tous les enfants du node enfant (récursif)
             node.LayoutNode();
         }
-
+        
         // Dessine la ligne vers le node parent        
         if (parent != null)
         {
-            line.SetPosition(0, transform.parent.position);     // Position du node parent
-            line.SetPosition(1, transform.position);            // Position actuelle du node
-        }       
-    }
+            Vector3[] positions = new Vector3[2]
+            {
+                parent.transform.position,
+                transform.position
+            };
+            line.SetPositions(positions);
+        }
+    }    
 }

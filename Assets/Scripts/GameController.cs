@@ -22,6 +22,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    // Prefabs 
+    public GameObject linkPrefab;
+
 	// Use this for initialization
 	void Start () {
 	    // Au démarrage du jeu
