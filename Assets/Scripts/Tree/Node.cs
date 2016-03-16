@@ -87,6 +87,12 @@ public class Node : MonoBehaviour {
         // La taille "atomique" du node (sans enfants)
         float width = layoutWidth + Tree.instance.spacingX;
 
+        // Plus large pour le node Couple
+        if (person != null && person.GetPersonCouple() != null)
+        {
+            width *= 2f;
+        }
+
         // Calcule la taille des nodes enfants
         float childrenWidth = 0f;
         foreach(Node node in children)
