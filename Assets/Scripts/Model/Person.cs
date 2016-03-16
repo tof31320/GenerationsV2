@@ -112,4 +112,17 @@ public class Person : MonoBehaviour
     {
         return couple.personB;
     }
+
+    public void OnMouseOverTrigger()
+    {
+        /*iTween.PunchScale(gameObject, iTween.Hash(
+            "amount", new Vector3(2f, 2f, 2f),
+            "time", Time.deltaTime
+            ));*/        
+    }
+
+    public void OnMouseExitTrigger()
+    {
+
+    }
 }

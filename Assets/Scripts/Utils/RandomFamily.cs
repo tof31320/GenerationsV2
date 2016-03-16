@@ -6,6 +6,9 @@ using System.Collections;
 /// </summary>
 public class RandomFamily : MonoBehaviour {
 
+    public static string[] maleNames = { "Louis", "Martin", "Jean", "Albert", "Franck", "Joseph", "Emile", "Paul", "Léon", "Pascal", "François" };
+    public static string[] femaleNames = { "Erika", "Jeanne", "Martine", "Louise", "France", "Joan", "Emilie", "Véra", "Léa", "Pascaline", "Anne"};
+
     /// <summary>
     /// Les infos sur la famille
     /// </summary>
@@ -64,6 +67,7 @@ public class RandomFamily : MonoBehaviour {
         // Infos propres de la personne
         person.family = family;
         person.sexe = sexe;
+        person.firstname = RandomFirstname(person.sexe);
         
         // Met à jour l'avatar
         if (person.sexe == Sexe.FEMALE)
@@ -88,6 +92,8 @@ public class RandomFamily : MonoBehaviour {
             }
         }
 
+        g.name = person.firstname + "_" + family.lastname;
+
         return person;
     }    
 
@@ -103,5 +109,22 @@ public class RandomFamily : MonoBehaviour {
         {
             return Sexe.FEMALE;
         }
+    }
+
+    public string RandomFirstname(Sexe sexe = Sexe.MALE)
+    {
+        string[] names = null;
+        if (sexe == Sexe.MALE)
+        {
+            names = maleNames;
+        }
+        else
+        {
+            names = femaleNames;
+        }
+
+        int index = Random.Range(0, names.Length);
+
+        return names[index];
     }
 }

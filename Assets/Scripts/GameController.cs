@@ -40,13 +40,17 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.U))
+        /*if (Input.GetKeyDown(KeyCode.U))
         {
             player.SetCoupleWith(personToUnion);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             player.SetCoupleWith(null);
+        }*/
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
 	}
 }

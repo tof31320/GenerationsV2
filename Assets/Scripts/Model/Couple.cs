@@ -12,8 +12,7 @@ public class Couple : MonoBehaviour {
     {
         get { return _personB; }
         set
-        {
-            Debug.Log("Couple.set(" + value + "):" + this);
+        {            
             if (_personB != null)
             {
                 _personB.visible = false;

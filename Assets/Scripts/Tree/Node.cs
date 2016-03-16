@@ -54,6 +54,8 @@ public class Node : MonoBehaviour {
     /// </summary>
     public LayoutParams layoutParams;
 
+    public bool useITween = false;
+
     public void Start()
     {
         // Le node parent est toujours le parent dans la hierarchie du jeu (scene)
@@ -136,8 +138,8 @@ public class Node : MonoBehaviour {
                               pos.y,
                               pos.z);
 
-            // Positionne le node enfant avec un effet de ralentissement
-            node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime);
+            // Positionne le node enfant avec un effet de ralentissement           
+            node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime);                        
 
             // Passe au node suivant
             i++;
