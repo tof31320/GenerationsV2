@@ -24,14 +24,29 @@ public class GameController : MonoBehaviour {
 
     // Prefabs 
     public GameObject linkPrefab;
+    public GameObject personPrefab;
 
-	// Use this for initialization
-	void Start () {
+    // Sprites
+    public Sprite defaultMaleAvatarSprite;
+    public Sprite defaultFemaleAvatarSprite;
+
+    public Person player;
+    public Person personToUnion;
+
+    // Use this for initialization
+    void Start () {
 	    // Au démarrage du jeu
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            player.SetCoupleWith(personToUnion);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            player.SetCoupleWith(null);
+        }
 	}
 }

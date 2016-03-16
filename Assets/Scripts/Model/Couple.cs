@@ -7,26 +7,30 @@ public class Couple : MonoBehaviour {
 
     public Person personA = null;
     [SerializeField]
-    public Person personB = null;    
+    private Person _personB = null;
+    public Person personB
+    {
+        get { return _personB; }
+        set
+        {
+            Debug.Log("Couple.set(" + value + "):" + this);
+            if (_personB != null)
+            {
+                _personB.visible = false;
+            }
+            _personB = value;
+            if (_personB != null)
+            {
+                _personB.visible = true;
+            }
+        }
+    }  
 
     public SpriteRenderer spriteRenderer;
 
     public void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        /*if (transform.parent != null)
-        {
-            personA = transform.parent.GetComponent<Person>();
-        }
-        if (transform.childCount > 0)
-        {
-            personB = transform.GetChild(0).GetComponent<Person>();
-        }
-        else
-        {
-            personB = null;
-        }        */
+        spriteRenderer = GetComponent<SpriteRenderer>();        
     }
 
     public void Layout()
@@ -41,9 +45,11 @@ public class Couple : MonoBehaviour {
         }
         if (personA != null && spriteRenderer.enabled)
         {
-            personB.transform.position = new Vector3(personA.transform.position.x + layoutWidth,
+            personB.transform.position = Vector3.Lerp(personB.transform.position, 
+                                                    new Vector3(personA.transform.position.x + layoutWidth,
                                                       personA.transform.position.y,
-                                                      personA.transform.position.z);
+                                                      personA.transform.position.z), 
+                                                    Time.deltaTime);
         }
     }
 

@@ -8,6 +8,11 @@ using System.Collections;
 public class Family : MonoBehaviour {
 
     /// <summary>
+    /// Identifiant unique dans le jeu
+    /// </summary>
+    public long id = 0;
+
+    /// <summary>
     /// Nom de famille
     /// </summary>
     public string lastname = "";

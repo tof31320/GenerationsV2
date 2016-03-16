@@ -90,7 +90,7 @@ public class Node : MonoBehaviour {
         // Plus large pour le node Couple
         if (person != null && person.GetPersonCouple() != null)
         {
-            width *= 2f;
+            width += layoutWidth;
         }
 
         // Calcule la taille des nodes enfants
