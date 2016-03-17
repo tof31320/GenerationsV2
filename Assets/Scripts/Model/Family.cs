@@ -8,6 +8,22 @@ using System.Collections;
 public class Family : MonoBehaviour {
 
     /// <summary>
+    /// Gestion de l'identifiant des familles
+    /// </summary>
+    private static int _nextId = 1;
+    public static int nextId
+    {
+        get
+        {
+            return _nextId++;
+        }
+        set
+        {
+            _nextId = value;
+        }
+    }
+
+    /// <summary>
     /// Identifiant unique dans le jeu
     /// </summary>
     public long id = 0;
@@ -21,4 +37,9 @@ public class Family : MonoBehaviour {
     /// Le patriarche qui a fondé la famille
     /// </summary>
     public Person root;
+
+    public void Awake()
+    {
+        id = Family.nextId;
+    }
 }

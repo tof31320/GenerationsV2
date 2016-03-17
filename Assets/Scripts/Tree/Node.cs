@@ -12,8 +12,8 @@ public class Node : MonoBehaviour {
 
     /// <summary>
     /// Le parent 
-    /// </summary>
-    public Node parent;
+    /// </summary>    
+    public Node parent = null;   
 
     /// <summary>
     /// A quelle génération appartient le node
@@ -23,7 +23,7 @@ public class Node : MonoBehaviour {
     /// <summary>
     /// Les nodes enfants
     /// </summary>
-    public List<Node> children;
+    public List<Node> children = new List<Node>();
 
     /// <summary>
     /// Gestion de l'affichage du node à l'écran (layout) 
@@ -59,7 +59,7 @@ public class Node : MonoBehaviour {
     public void Start()
     {
         // Le node parent est toujours le parent dans la hierarchie du jeu (scene)
-        parent = transform.parent.GetComponent<Node>();
+        //parent = transform.parent.GetComponent<Node>();
 
         layoutParams = GetComponent<LayoutParams>();
         person = GetComponent<Person>();
@@ -67,15 +67,15 @@ public class Node : MonoBehaviour {
         line.SetWidth(0.1f, 0.1f);
 
         // Associe les nodes enfants déjà présents dans la hierarchie du jeu (scene)
-        children = new List<Node>();
-        for(int i = 0; i < transform.childCount; i++)
+        //children = new List<Node>();
+        /*for(int i = 0; i < transform.childCount; i++)
         {
             Node n = transform.GetChild(i).GetComponent<Node>();
             if (n != null)
             {
                 children.Add(n);
             }    
-        }
+        }*/
     }    
 
     /// <summary>
@@ -158,8 +158,11 @@ public class Node : MonoBehaviour {
                 parent.transform.position,
                 transform.position
             };
-            line.SetPosition(0, positions[0]);
-            line.SetPosition(1, positions[1]);
-        }
+            if (line != null)
+            {
+                line.SetPosition(0, positions[0]);
+                line.SetPosition(1, positions[1]);
+            }            
+        }    
     }    
 }

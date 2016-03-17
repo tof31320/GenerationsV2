@@ -9,6 +9,9 @@ public class RandomFamily : MonoBehaviour {
     public static string[] maleNames = { "Louis", "Martin", "Jean", "Albert", "Franck", "Joseph", "Emile", "Paul", "Léon", "Pascal", "François" };
     public static string[] femaleNames = { "Erika", "Jeanne", "Martine", "Louise", "France", "Joan", "Emilie", "Véra", "Léa", "Pascaline", "Anne"};
 
+    public Sprite[] maleAvatars;
+    public Sprite[] femaleAvatars;
+
     /// <summary>
     /// Les infos sur la famille
     /// </summary>
@@ -36,7 +39,8 @@ public class RandomFamily : MonoBehaviour {
 
 	public void Start()
     {
-        family = GetComponent<Family>();
+        family = GetComponent<Family>();        
+
         tree = GetComponent<Tree>();
 
         Person root = CreatePerson(null, nbGenerations);
@@ -49,18 +53,20 @@ public class RandomFamily : MonoBehaviour {
     public Person CreatePerson(Person parent, int generation, Sexe sexe = Sexe.MALE)
     {
         GameObject g = Instantiate(GameController.instance.personPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-        if (parent != null)
+        /*if (parent != null)
         {
             g.transform.SetParent(parent.transform);
         }
         else
         {
             g.transform.SetParent(transform);
-        }
+        }*/
 
         Node node = g.GetComponent<Node>();
         if (parent != null) { 
             node.parent = parent.GetComponent<Node>();
+            node.parent.children.Add(node);
+            Debug.Log(node + " child of " + node.parent + " => " + node.parent.children.Count);
         }
 
         Person person = g.GetComponent<Person>();
@@ -68,16 +74,9 @@ public class RandomFamily : MonoBehaviour {
         person.family = family;
         person.sexe = sexe;
         person.firstname = RandomFirstname(person.sexe);
-        
+
         // Met à jour l'avatar
-        if (person.sexe == Sexe.FEMALE)
-        {
-            person.avatar = GameController.instance.defaultFemaleAvatarSprite;
-        }
-        else
-        {
-            person.avatar = GameController.instance.defaultMaleAvatarSprite;
-        }
+        person.avatar = RandomAvatar(person.sexe);
 
         // Affiche ou pas la personne dans le jeu
         person.visible = visible;
@@ -127,4 +126,17 @@ public class RandomFamily : MonoBehaviour {
 
         return names[index];
     }
+
+    public Sprite RandomAvatar(Sexe sexe = Sexe.MALE)
+    {
+        Sprite[] avatars = maleAvatars;
+        if (sexe == Sexe.FEMALE)
+        {
+            avatars = femaleAvatars;
+        }
+
+        int index = Random.Range(0, avatars.Length);
+
+        return avatars[index];
+    }    
 }

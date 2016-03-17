@@ -23,7 +23,19 @@ public class Person : MonoBehaviour
     /// <summary>
     /// La famille du personnage
     /// </summary>
-    public Family family;
+    private Family _family = null;
+    public Family family
+    {
+        get { return _family; }
+        set
+        {
+            _family = value;
+            if (_family != null)
+            {
+                transform.SetParent(_family.transform);
+            }            
+        }
+    }
 
     /// <summary>
     /// Le prénom
@@ -54,15 +66,25 @@ public class Person : MonoBehaviour
         get { return _avatar; }
         set
         {
-            _avatar = value;            
+            _avatar = value;
             spriteRenderer.sprite = _avatar;
         }
     }
 
     /// <summary>
+    /// La gestion de l'interface pour la personne
+    /// </summary>
+    public UIPerson ui;
+
+    /// <summary>
     /// Affichage de l'avatar
     /// </summary>
     private SpriteRenderer spriteRenderer;
+
+    private bool _isMouseOver = false;
+    private Vector3 _defaultScale = Vector3.zero;
+    private float _scaleEffectTime = 0.6f;
+    private Vector3 _amountMouseOver = new Vector3(0.5f, 0.5f, 0.5f);
 
     /// <summary>
     /// Gestion de la visibilité de l'avatar dans le jeu
@@ -75,17 +97,26 @@ public class Person : MonoBehaviour
         set
         {
             _visible = value;
+            ui.gameObject.SetActive(_visible);
             spriteRenderer.enabled = _visible;
         }
     }
 
     public void Awake()
     {
+        // Associe les composants
+        ui = GetComponentInChildren<UIPerson>();
+
         couple = GetComponentInChildren<Couple>();
         couple.personA = this;
         couple.personB = null;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Inscription de l'objet au refresh du jeu
+        GameSpeedController.instance.onUpdateGame += UpdateGame;
+
+        _defaultScale = transform.localScale;        
     }
 
     /// <summary>
@@ -113,16 +144,36 @@ public class Person : MonoBehaviour
         return couple.personB;
     }
 
-    public void OnMouseOverTrigger()
+    public void UpdateGame()
     {
-        /*iTween.PunchScale(gameObject, iTween.Hash(
-            "amount", new Vector3(2f, 2f, 2f),
-            "time", Time.deltaTime
-            ));*/        
+        //Debug.Log(this + "UpdateGame()");
     }
 
-    public void OnMouseExitTrigger()
-    {
+    public void Update()
+    {        
+        if (_isMouseOver)
+        {
+            //iTween.PunchScale(gameObject, new Vector3(10f, 1f, 1f), Time.deltaTime);
+            transform.localScale = Vector3.Lerp(transform.localScale, _defaultScale + _amountMouseOver, _scaleEffectTime);
+        }
+        else
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, _defaultScale, _scaleEffectTime);
+        }
+    }
 
+    public void OnMouseEnter()
+    {
+        _isMouseOver = true;        
+    }
+
+    public void OnMouseExit()
+    {
+        _isMouseOver = false;        
+    }
+
+    public void OnMouseDown()
+    {
+        GameController.instance.personSelected = this;
     }
 }
