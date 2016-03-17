@@ -17,14 +17,26 @@ public class UIPerson : MonoBehaviour {
     /// </summary>
     public Text txtName;
 
+    /// <summary>
+    /// Les actions que le joueur peut faire sur le personnage
+    /// </summary>
+    public UIPersonActionsPanel actionsPanel;
+
 	// Use this for initialization
 	void Start () {
         person = GetComponentInParent<Person>();
+
+        actionsPanel = GetComponentInChildren<UIPersonActionsPanel>();
+        actionsPanel.person = person;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         txtName.text = person.firstname;
+
+        if (person.selected != actionsPanel.gameObject.activeSelf)
+        {
+            actionsPanel.gameObject.SetActive(actionsPanel.gameObject.activeSelf);
+        }
 	}
 }

@@ -81,10 +81,35 @@ public class Person : MonoBehaviour
     /// </summary>
     private SpriteRenderer spriteRenderer;
 
+    /// <summary>
+    /// Gestion des évènements de la souris
+    /// </summary>
     private bool _isMouseOver = false;
     private Vector3 _defaultScale = Vector3.zero;
     private float _scaleEffectTime = 0.6f;
-    private Vector3 _amountMouseOver = new Vector3(0.5f, 0.5f, 0.5f);
+    private Vector3 _amountMouseOver = new Vector3(0.2f, 0.2f, 0.2f);
+
+    /// <summary>
+    /// Est-ce que cette personne est la
+    /// </summary>
+    public bool selected
+    {
+        get
+        {
+            return GameController.instance.personSelected == this;
+        }
+        set
+        {
+            if (value)
+            {
+                GameController.instance.personSelected = this;
+            }
+            else if(GameController.instance.personSelected == this)
+            {
+                GameController.instance.personSelected = null;
+            }            
+        }
+    }
 
     /// <summary>
     /// Gestion de la visibilité de l'avatar dans le jeu
@@ -159,7 +184,7 @@ public class Person : MonoBehaviour
         else
         {
             transform.localScale = Vector3.Lerp(transform.localScale, _defaultScale, _scaleEffectTime);
-        }
+        }        
     }
 
     public void OnMouseEnter()
