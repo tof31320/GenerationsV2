@@ -31,6 +31,7 @@ public class Node : MonoBehaviour {
     /// </summary>
     public float layoutWidth = 1f;
     public float layoutHeight = 1f;
+    public float layoutSpeed = 3f;
 
     /// <summary>
     /// Les liens affichés avec le parents
@@ -139,7 +140,7 @@ public class Node : MonoBehaviour {
                               pos.z);
 
             // Positionne le node enfant avec un effet de ralentissement           
-            node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime);                        
+            node.transform.position = Vector3.Lerp(node.transform.position, pos, Time.deltaTime * layoutSpeed);                        
 
             // Passe au node suivant
             i++;
@@ -156,7 +157,7 @@ public class Node : MonoBehaviour {
             Vector3[] positions = new Vector3[2]
             {
                 parent.transform.position,
-                transform.position
+                transform.position + new Vector3(0,0,1)
             };
             if (line != null)
             {

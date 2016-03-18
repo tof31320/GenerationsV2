@@ -24,10 +24,7 @@ public class UIPerson : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        person = GetComponentInParent<Person>();
-
-        actionsPanel = GetComponentInChildren<UIPersonActionsPanel>();
-        actionsPanel.person = person;
+        person = GetComponentInParent<Person>();        
 	}
 	
 	// Update is called once per frame
@@ -36,7 +33,7 @@ public class UIPerson : MonoBehaviour {
 
         if (person.selected != actionsPanel.gameObject.activeSelf)
         {
-            actionsPanel.gameObject.SetActive(actionsPanel.gameObject.activeSelf);
+            actionsPanel.gameObject.SetActive(person.selected);
         }
 	}
 }
