@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Modélise une famille de personnnes du jeu
@@ -37,6 +38,11 @@ public class Family : MonoBehaviour {
     /// Le patriarche qui a fondé la famille
     /// </summary>
     public Person root;
+
+    /// <summary>
+    /// Tous les membres de la familles
+    /// </summary>
+    public List<Person> persons = new List<Person>();
 
     public void Awake()
     {

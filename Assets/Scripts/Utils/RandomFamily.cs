@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Classe utilitaire pour la génération automatique d'une famille
 /// </summary>
-public class RandomFamily : MonoBehaviour {
+public class RandomFamily : MonoBehaviour {    
 
     public static string[] maleNames = { "Louis", "Martin", "Jean", "Albert", "Franck", "Joseph", "Emile", "Paul", "Léon", "Pascal", "François" };
     public static string[] femaleNames = { "Erika", "Jeanne", "Martine", "Louise", "France", "Joan", "Emilie", "Véra", "Léa", "Pascaline", "Anne"};
@@ -52,7 +52,13 @@ public class RandomFamily : MonoBehaviour {
 
     public Person CreatePerson(Person parent, int generation, Sexe sexe = Sexe.MALE)
     {
-        GameObject g = Instantiate(GameController.instance.personPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        Vector3 startPosition = Vector3.zero;
+        if (parent != null)
+        {
+            startPosition = parent.transform.position;
+        }
+
+        GameObject g = Instantiate(GameController.instance.personPrefab, startPosition, Quaternion.identity) as GameObject;
         /*if (parent != null)
         {
             g.transform.SetParent(parent.transform);

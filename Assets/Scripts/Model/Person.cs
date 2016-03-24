@@ -10,6 +10,29 @@ public enum Sexe
     FEMALE
 }
 
+public enum AstralSign
+{
+    ABEILLE,
+    BELETTE,
+    CARIBOU,
+    DALMATIEN,
+    ECUREUIL,
+    FAUCON,
+    GIRAFE,
+    HERISSON,
+    IBIS,
+    JAGUAR,
+    KOALA,
+    LAMA,
+    MERLE,
+    ORQUE,
+    PUMA,
+    RENARD,
+    SPHYNX,
+    TRUITE,
+    VAUTOUR
+}
+
 /// <summary>
 /// Modélise une personne du jeu
 /// </summary>
@@ -29,11 +52,17 @@ public class Person : MonoBehaviour
         get { return _family; }
         set
         {
+            if (_family != null)
+            {
+                _family.persons.Remove(this);
+            }
+
             _family = value;
             if (_family != null)
             {
+                _family.persons.Add(this);
                 transform.SetParent(_family.transform);
-            }            
+            }                        
         }
     }
 
@@ -51,6 +80,11 @@ public class Person : MonoBehaviour
     /// Si la personne est en couple
     /// </summary>
     public Couple couple = null;
+
+    /// <summary>
+    /// Le signe astral qui agit sur le couple
+    /// </summary>
+    public AstralSign sign = AstralSign.ABEILLE;
 
     /// <summary>
     /// Numéro du tour de jeu durant lequel la personne est née
@@ -80,6 +114,11 @@ public class Person : MonoBehaviour
     /// Affichage de l'avatar
     /// </summary>
     private SpriteRenderer spriteRenderer;
+
+    /// <summary>
+    /// La santé 
+    /// </summary>
+    public float health = 100f;
 
     /// <summary>
     /// Gestion des évènements de la souris

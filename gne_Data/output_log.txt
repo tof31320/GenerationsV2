@@ -16,15 +16,43 @@ Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Ma
 Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.134 seconds
+- Completed reload, in  0.147 seconds
 Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.476656 ms
+UnloadTime: 0.561181 ms
 Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
@@ -48,18 +76,58 @@ Person(Clone) (Node) child of Person(Clone) (Node) => 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2950 -> priority: 1 
-  Thread -> id: 29e4 -> priority: 1 
-NullReferenceException: Object reference not set to an instance of an object
-  at UIPersonDetailsPanel.UpdatePanel () [0x00000] in <filename unknown>:0 
-  at UIPersonDetailsPanel.set_person (.Person value) [0x00000] in <filename unknown>:0 
-  at UIPersonDetailsPanel.ShowPersonDetails (.Person person) [0x00000] in <filename unknown>:0 
-  at Person.OnMouseDown () [0x00000] in <filename unknown>:0 
-UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
-UnityEngine.HitInfo:SendMessage(String)
-UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
-UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32)
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
  
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1414 -> priority: 1 
+  Thread -> id: 2460 -> priority: 1 
+Person(Clone) (Node) child of Martin_TEST (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Paul_TEST (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Pascaline_TEST (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Pascaline_TEST (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Albert_GAMMA (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Albert_GAMMA (Node) => 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Emile_TEST (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Emile_TEST (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
 

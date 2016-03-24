@@ -43,4 +43,31 @@ public class UIPersonDetailsPanel : UIMenu {
 
         Show();
     }
+
+    public void UnionActionButtonClick()
+    {
+        UIManager.instance.personSelectionPanel.title = "Sélectionnez le couple";
+        UIManager.instance.personSelectionPanel.LoadAllPersons();
+        UIManager.instance.personSelectionPanel.onValidatePersonSelection = OnValidateSelectionPerson;
+        UIManager.instance.personSelectionPanel.UpdatePanel();
+        UIManager.instance.personSelectionPanel.Show();
+    }
+
+    public void MakeAChildButtonClick()
+    {
+        RandomFamily randomUtils = person.family.GetComponent<RandomFamily>();
+
+        randomUtils.CreatePerson(person, 1, randomUtils.RandomSexe());
+    }
+
+    public void OnValidateSelectionPerson(Person personSelected)
+    {        
+        UIManager.instance.personSelectionPanel.Close();
+
+        if (person != null)
+        {
+            // Création du couple
+            person.SetCoupleWith(personSelected);
+        }
+    }
 }

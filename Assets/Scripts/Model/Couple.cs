@@ -17,9 +17,10 @@ public class Couple : MonoBehaviour {
             {
                 _personB.visible = false;
             }
-            _personB = value;
+            _personB = value;            
             if (_personB != null)
             {
+                _personB.transform.position = transform.position;
                 _personB.visible = true;
             }
         }

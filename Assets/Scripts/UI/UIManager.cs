@@ -24,5 +24,5 @@ public class UIManager : MonoBehaviour {
 
     public UIPersonDetailsPanel personDetailsPanel;
 
-   
+    public UIPersonSelectionPanel personSelectionPanel;   
 }
