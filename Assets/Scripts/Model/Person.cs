@@ -214,15 +214,27 @@ public class Person : MonoBehaviour
     }
 
     public void Update()
-    {        
+    {
+       
         if (_isMouseOver)
         {
             //iTween.PunchScale(gameObject, new Vector3(10f, 1f, 1f), Time.deltaTime);
             transform.localScale = Vector3.Lerp(transform.localScale, _defaultScale + _amountMouseOver, _scaleEffectTime);
+            ui.selectionPanel.gameObject.SetActive(true);
         }
         else
         {
             transform.localScale = Vector3.Lerp(transform.localScale, _defaultScale, _scaleEffectTime);
+            ui.selectionPanel.gameObject.SetActive(false);
+
+            if (selected && !ui.selectionPanel.gameObject.activeSelf)
+            {
+                ui.selectionPanel.gameObject.SetActive(true);
+            }
+            else if (!selected && ui.selectionPanel.gameObject.activeSelf)
+            {
+                ui.selectionPanel.gameObject.SetActive(false);
+            }
         }        
     }
 

@@ -26,6 +26,11 @@ public class UIPersonDetailsPanel : UIMenu {
     /// </summary>
     public Text title;
 
+    /// <summary>
+    /// La barre de santé
+    /// </summary>
+    public Slider healthSlider;
+
     public void UpdatePanel()
     {
         if (person == null)
@@ -34,7 +39,9 @@ public class UIPersonDetailsPanel : UIMenu {
         }
         avatarImage.sprite = _person.avatar;
 
-        title.text = _person.firstname + " " + _person.family.name; 
+        title.text = _person.firstname + " " + _person.family.name;
+
+        healthSlider.value = _person.health / 100.0f;
     }    
 
     public void ShowPersonDetails(Person person)
@@ -57,7 +64,9 @@ public class UIPersonDetailsPanel : UIMenu {
     {
         RandomFamily randomUtils = person.family.GetComponent<RandomFamily>();
 
-        randomUtils.CreatePerson(person, 1, randomUtils.RandomSexe());
+        Person baby = randomUtils.CreatePerson(person, 1, randomUtils.RandomSexe());
+
+        GameController.instance.cameraController.FocusOnNode(baby);
     }
 
     public void OnValidateSelectionPerson(Person personSelected)

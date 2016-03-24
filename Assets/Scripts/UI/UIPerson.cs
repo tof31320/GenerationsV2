@@ -22,6 +22,11 @@ public class UIPerson : MonoBehaviour {
     /// </summary>
     public UIPersonActionsPanel actionsPanel;
 
+    /// <summary>
+    /// L'encadré pour la selection
+    /// </summary>
+    public Transform selectionPanel;
+
 	// Use this for initialization
 	void Start () {
         person = GetComponentInParent<Person>();        
