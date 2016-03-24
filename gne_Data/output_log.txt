@@ -1,0 +1,65 @@
+Initialize engine version: 5.3.3f1 (910d71450a97)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4600 (ID=0x412)
+    Vendor:   Intel
+    VRAM:     2103 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.134 seconds
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Christophe\Documents\Unity\GenerationsV2\gne_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.476656 ms
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Person(Clone) (Node) child of Person(Clone) (Node) => 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2950 -> priority: 1 
+  Thread -> id: 29e4 -> priority: 1 
+NullReferenceException: Object reference not set to an instance of an object
+  at UIPersonDetailsPanel.UpdatePanel () [0x00000] in <filename unknown>:0 
+  at UIPersonDetailsPanel.set_person (.Person value) [0x00000] in <filename unknown>:0 
+  at UIPersonDetailsPanel.ShowPersonDetails (.Person person) [0x00000] in <filename unknown>:0 
+  at Person.OnMouseDown () [0x00000] in <filename unknown>:0 
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.HitInfo:SendMessage(String)
+UnityEngine.SendMouseEvents:SendEvents(Int32, HitInfo)
+UnityEngine.SendMouseEvents:DoSendMouseEvents(Int32)
+ 
+(Filename:  Line: -1)
+

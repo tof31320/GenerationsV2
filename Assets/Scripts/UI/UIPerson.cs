@@ -29,11 +29,6 @@ public class UIPerson : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        txtName.text = person.firstname;
-
-        if (person.selected != actionsPanel.gameObject.activeSelf)
-        {
-            actionsPanel.gameObject.SetActive(person.selected);
-        }
+        txtName.text = person.firstname;        
 	}
 }

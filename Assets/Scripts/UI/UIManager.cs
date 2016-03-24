@@ -20,5 +20,9 @@ public class UIManager : MonoBehaviour {
             }
             return _instance;
         }
-    }    
+    }
+
+    public UIPersonDetailsPanel personDetailsPanel;
+
+   
 }

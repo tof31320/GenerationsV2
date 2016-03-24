@@ -56,8 +56,15 @@ public class GameController : MonoBehaviour {
     public Person personSelected = null;
     #endregion
 
+    /// <summary>
+    /// Controle de la caméra
+    /// </summary>
+    public CameraController cameraController;
+
     // Use this for initialization
     void Start () {
+        cameraController = Camera.main.GetComponent<CameraController>();
+
         // Au démarrage du jeu
         LoadFamilies();
 	}
@@ -86,6 +93,10 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            personSelected = null;
         }
 	}
 }

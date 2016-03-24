@@ -200,5 +200,9 @@ public class Person : MonoBehaviour
     public void OnMouseDown()
     {
         GameController.instance.personSelected = this;
+
+        GameController.instance.cameraController.FocusOnNode(this);
+
+        UIManager.instance.personDetailsPanel.ShowPersonDetails(GameController.instance.personSelected);
     }
 }
